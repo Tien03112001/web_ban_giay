@@ -73,16 +73,18 @@
                                         <div class="user-img" style="background-image: url(/bootstrapUser/images/avatarUser.jpg)"></div>
                                         <div class="desc">
                                             <form method="post" action="">
+                                                <input type="hidden" name="product_id" value="{{$product_id}}">
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                 @php
                                                 if(isset(Auth::user()->id))
                                                 {
                                                 $name= Auth::user()->name;
                                                 echo '<h4>';
                                                     echo '<span class="text-left">'.$name.'</span>';
-                                                    echo '<textarea name="message" id="message" cols="5" rows="3" class="form-control"></textarea>';
+                                                    echo '<textarea name="comment" id="comment" cols="5" rows="3" class="form-control"></textarea>';
                                                     echo '';
                                                     echo '</h4>';
-                                                echo '<button type="submit" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>';
+                                                echo '<button type="button" id="btn-comment" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>';
                                                 }
                                                 else
                                                 {
@@ -97,15 +99,15 @@
 
                                         </div>
                                     </div>
-                                    <div class="review">
-                                        <div class="user-img" style="background-image: url(/bootstrapUser/images/avatarUser.jpg)"></div>
+                                    <div id="comment">
+                                        <!-- <div class="user-img" style="background-image: url(/bootstrapUser/images/avatarUser.jpg)"></div>
                                         <div class="desc">
                                             <h4>
                                                 <span class="text-left">Jacob Webb</span>
                                                 <span class="text-right">25 April 2020</span>
                                             </h4>
                                             <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

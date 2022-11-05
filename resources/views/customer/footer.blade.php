@@ -136,6 +136,24 @@
 
     });
 </script>
+<script>
+    $('#btn-comment').click(
+        function(ev) {
+            let content = $('#comment').val();
+            let _commentUrl = '{{ route("ajax.comment") }}';
+            // console.log(content, _commentUrl);
+            $.ajax({
+                url: _commentUrl,
+                type: "POST",
+                data: {
+                    content: content,
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        })
+</script>
 <script type="text/javascript">
     $('.price_sidebar').click(
         function() {

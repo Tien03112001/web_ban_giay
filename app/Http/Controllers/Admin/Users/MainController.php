@@ -33,7 +33,8 @@ class MainController extends Controller
         return view('customer.productdetail', [
             'title' => 'Trang chi tiết sản phẩm',
             'product' => $product,
-            'menus' => $menus
+            'menus' => $menus,
+            'product_id' => $id,
         ]);
     }
     public function ProductList()
