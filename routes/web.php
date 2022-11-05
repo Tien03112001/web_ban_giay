@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('admin/user/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/user/login', [LoginController::class, 'store']);
 Route::get('admin/logout', [LoginController::class, 'logout']);
-Route::get('admin/user/register', [LoginController::class, 'getformregister']);
+Route::get('admin/user/register', [LoginController::class, 'getformregister'])->name('register');
 Route::post('admin/user/register', [LoginController::class, 'register']);
 Route::get('admin/changepassword', [LoginController::class, 'getformchangepassword']);
 Route::post('admin/changepassword', [LoginController::class, 'changePassword']);

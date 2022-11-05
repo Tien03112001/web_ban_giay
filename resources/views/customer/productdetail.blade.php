@@ -73,12 +73,26 @@
                                         <div class="user-img" style="background-image: url(/bootstrapUser/images/avatarUser.jpg)"></div>
                                         <div class="desc">
                                             <form method="post" action="">
-                                                <h4>
-                                                    <span class="text-left">{{Auth::user()->name}}</span>
-                                                    <textarea name="message" id="message" cols="5" rows="3" class="form-control"></textarea>
+                                                @php
+                                                if(isset(Auth::user()->id))
+                                                {
+                                                $name= Auth::user()->name;
+                                                echo '<h4>';
+                                                    echo '<span class="text-left">'.$name.'</span>';
+                                                    echo '<textarea name="message" id="message" cols="5" rows="3" class="form-control"></textarea>';
+                                                    echo '';
+                                                    echo '</h4>';
+                                                echo '<button type="submit" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>';
+                                                }
+                                                else
+                                                {
+                                                echo '<div class="reg">';
+                                                    echo '<p class="mb-0"><a href="../admin/user/login">Đăng nhập</a> để gửi bình luận sản phẩm</p>';
+                                                    echo '</div>';
+                                                }
+                                                @endphp
 
-                                                </h4>
-                                                <button type="submit" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>
+
                                             </form>
 
                                         </div>

@@ -27,7 +27,7 @@
 
                     else{
                     echo '<div class="reg">';
-                        echo '<p class="mb-0"><a href="#" class="mr-2">Đăng ký </a> <a href="#">Đăng nhập</a></p>';
+                        echo '<p class="mb-0"><a href="../admin/user/register" class="mr-2">Đăng ký </a> <a href="../admin/user/login">Đăng nhập</a></p>';
                         echo '</div>';
                     }
                     @endphp
