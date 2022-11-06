@@ -14,4 +14,8 @@ class Comment extends Model
         'content',
         'active',
     ];
+    public function User()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\Menu\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\MainController;
-use App\Http\Controllers\CommentController;
+
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,7 +43,7 @@ Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/checkout', [CartController::class, 'complete_checkout']);
 
 ##COMMENT
-Route::post('/comment', [CommentController::class, 'comment'])->name('ajax.comment');
+Route::post('/comment', [CommentController::class, 'comment']);
 
 Route::get('/filter_price_product', [ProductController::class, 'filter_price_product']);
 Route::middleware(['auth'])->group(function () {

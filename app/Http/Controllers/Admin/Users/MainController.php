@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Product;
@@ -30,11 +31,13 @@ class MainController extends Controller
     {
         $product = Product::where('id', $id)->first();
         $menus = Menu::where('active', 0)->get();
+        $comments = Comment::where('product_id', $id)->get();
         return view('customer.productdetail', [
             'title' => 'Trang chi tiết sản phẩm',
             'product' => $product,
             'menus' => $menus,
             'product_id' => $id,
+            'comments' => $comments,
         ]);
     }
     public function ProductList()

@@ -100,6 +100,9 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="/bootstrapUser/js/google-map.js"></script>
 <script src="/bootstrapUser/js/main.js"></script>
+<script src="/public/js/main.js"></script>
+
+
 <script>
     $(document).ready(function() {
 
@@ -140,16 +143,17 @@
     $('#btn-comment').click(
         function(ev) {
             let content = $('#comment').val();
-            let _commentUrl = '{{ route("ajax.comment") }}';
-            // console.log(content, _commentUrl);
+            let product_id = $('#product_id').val();
             $.ajax({
-                url: _commentUrl,
+                url: '/comment',
                 type: "POST",
                 data: {
                     content: content,
+                    _token: '{{csrf_token()}}',
+                    product_id: product_id,
                 },
-                success: function(data) {
-                    console.log(data);
+                success: function(res) {
+                    $('#comment').html(res);
                 }
             })
         })
