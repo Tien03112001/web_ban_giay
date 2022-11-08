@@ -103,6 +103,14 @@
                                 </ul>
                             </div> -->
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/comment/list" class="nav-link">
+                                <i class="mdi mdi-comment"></i>
+
+                                <span class="menu-title">Quản lý bình luận</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -74,5 +74,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{customer}', [OrderController::class, 'edit']);
             Route::post('/edit/{customer}', [OrderController::class, 'update']);
         });
+        #COMMENT
+        Route::prefix('/comment')->group(function () {
+            Route::get('/list', [CommentController::class, 'show']);
+            Route::DELETE('/destroy', [CommentController::class, 'destroy']);
+            // Route::post('/edit/{customer}', [OrderController::class, 'update']);
+        });
     });
 });

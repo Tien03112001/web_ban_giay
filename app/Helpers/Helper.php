@@ -25,6 +25,24 @@ class Helper
         }
         return $html;
     }
+    public static function comment($comments)
+    {
+        $html = '';
+        foreach ($comments as $key => $comment) {
+            $html .= '<tr>
+                            <td>' . $comment->id . '</td>
+                            <td>' . $comment->product->name . '</td>
+                             <td>' . $comment->content . '</td>
+                            <td>' . self::active($comment->active) . '</td>
+                            <td>' . $comment->updated_at . '</td>
+                            <td>
+                            <a href="/product/' . $comment->product_id . '"  class="btn btn-success btn-md">Xem chi tiết bình luận</a>
+                            <a   onclick="removeRow(' .  $comment->id . ', \'/admin/comment/destroy\')" class="btn btn-danger btn-md">xóa</a>
+                            </td>
+                        </tr>';
+        }
+        return $html;
+    }
     public static function active($active): string
     {
         return $active == 1 ? '<span class="btn btn-danger btn-xs">NO</span>'
