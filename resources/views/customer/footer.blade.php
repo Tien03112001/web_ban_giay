@@ -152,8 +152,21 @@
                     _token: '{{csrf_token()}}',
                     product_id: product_id,
                 },
-                success: function(res) {
-                    $('#comment').html(res);
+                success: function(data) {
+                    var comment = data.res;
+                    var divComment = document.getElementById('comment-child');
+                    console.log(comment);
+                    divComment.innerHTML = `
+        <div class="vcard bio">
+            <img width="20%" src="/bootstrapUser/images/person_1.jpg" alt="Image placeholder">
+        </div>
+        <div class="comment-body">
+            <h3>${comment.name}</h3>
+            <div class="meta">${comment.content}</div>
+            <p>${comment.updated}</p>
+
+        </div>`;
+                    document.getElementById('comment').value = '';
                 }
             })
         })

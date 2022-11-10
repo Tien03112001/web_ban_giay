@@ -18,6 +18,7 @@ class CommentController extends Controller
     }
     public function comment(Request $request)
     {
+
         $data = [
             'user_id' => Auth::user()->id,
             'product_id' => $request->input('product_id'),
@@ -25,8 +26,14 @@ class CommentController extends Controller
 
         ];
         if ($comment = Comment::create($data)) {
-            $comments = Comment::where('product_id', (int)$request->input('product_id'))->OrderBy('id', 'DESC')->get();
-            return view('customer.listComment');
+
+            $comment_lastest = Comment::orderByDESC('id')->first();
+            $res = [
+                'name' => $comment_lastest->user->name,
+                'content' => $comment_lastest->content,
+                'updated' => $comment_lastest->updated_at
+            ];
+            return response()->json(['res' => $res]);
         }
     }
     public function show()

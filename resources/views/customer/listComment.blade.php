@@ -7,8 +7,11 @@
         </h4>
 </div> -->
 <ul id="comment-list">
-    @foreach($product->comments as $comment)
-    <li class="comment">
+    <li id="comment-child">
+    </li>
+
+    @foreach($comments as $comment)
+    <li id="comment-child-1">
         <div class="vcard bio">
             <img width="20%" src="/bootstrapUser/images/person_1.jpg" alt="Image placeholder">
         </div>
