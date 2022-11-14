@@ -13,7 +13,7 @@
 </section>
 
 <section class="ftco-section">
-    <form method="post" action="/addtocart">
+    <form method="post">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-5 ftco-animate">
@@ -43,7 +43,7 @@
                         <p style="color: #000;">80 piece available</p>
                     </div> -->
                     </div>
-                    <p><button type="submit" class="btn btn-primary py-3 px-5 mr-2">Add to Cart</a>
+                    <p><button type="submit" class="btn btn-primary py-3 px-5 mr-2" formaction="/add-cart">Add to Cart</a>
                 </div>
             </div>
             <div class="row mt-5">
@@ -72,30 +72,25 @@
                                     <div class="review">
                                         <div class="user-img" style="background-image: url(/bootstrapUser/images/avatarUser.jpg)"></div>
                                         <div class="desc">
-                                            <form>
-                                                <input type="hidden" id="product_id" value="{{$product->id}}">
-                                                @php
-                                                if(isset(Auth::user()->id))
-                                                {
-                                                $name= Auth::user()->name;
-                                                echo '<h4>';
-                                                    echo '<span class="text-left">'.$name.'</span>';
-                                                    echo '<textarea id="comment" cols="5" rows="3" class="form-control"></textarea>';
-                                                    echo '';
-                                                    echo '</h4>';
-                                                echo '<button type="button" id="btn-comment" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>';
-                                                }
-                                                else
-                                                {
-                                                echo '<div class="reg">';
-                                                    echo '<p class="mb-0"><a href="../admin/user/login">Đăng nhập</a> để gửi bình luận sản phẩm</p>';
-                                                    echo '</div>';
-                                                }
-                                                @endphp
-
-
-                                            </form>
-
+                                            <input type="hidden" id="product_id" value="{{$product->id}}">
+                                            @php
+                                            if(isset(Auth::user()->id))
+                                            {
+                                            $name= Auth::user()->name;
+                                            echo '<h4>';
+                                                echo '<span class="text-left">'.$name.'</span>';
+                                                echo '<textarea id="comment" cols="5" rows="3" class="form-control"></textarea>';
+                                                echo '';
+                                                echo '</h4>';
+                                            echo '<button type="button" id="btn-comment" class="btn btn-primary py-3 px-5 mr-2">Gửi bình luận</button>';
+                                            }
+                                            else
+                                            {
+                                            echo '<div class="reg">';
+                                                echo '<p class="mb-0"><a href="../admin/user/login">Đăng nhập</a> để gửi bình luận sản phẩm</p>';
+                                                echo '</div>';
+                                            }
+                                            @endphp
                                         </div>
                                     </div>
                                     @include('customer.listComment')

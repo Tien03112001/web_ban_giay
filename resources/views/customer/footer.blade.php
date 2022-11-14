@@ -139,6 +139,7 @@
 
     });
 </script>
+
 <script>
     $('#btn-comment').click(
         function(ev) {
@@ -155,7 +156,6 @@
                 success: function(data) {
                     var comment = data.res;
                     var divComment = document.getElementById('comment-child');
-                    console.log(comment);
                     divComment.innerHTML = `
         <div class="vcard bio">
             <img width="20%" src="/bootstrapUser/images/person_1.jpg" alt="Image placeholder">
@@ -171,27 +171,56 @@
             })
         })
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $('.price_sidebar').click(
         function() {
+
             var href = $(this).attr('href');
+            let menu_id = $('#menu_id').val();
             if (href == '#op1') {
-                var value = 1;
+                value = 1;
             } else if (href == '#op2') {
-                var value = 2;
+                value = 2;
             } else if (href == '#op3') {
-                var value = 3;
+                value = 3;
             } else
-                var value = 4;
+                value = 4;
             $.ajax({
+
                 url: "{{url('/filter_price_product')}}",
-                method: 'GET',
+                method: 'POST',
                 data: {
-                    value: value
+                    value: value,
+                    menu_id: menu_id,
+
                 },
                 success: function(data) {
-                    document.getElementById('show').html(data);
+                    var html = '';
+                    for (var i = 0; i < data.res.length; i++) {
+
+                        value = `<div class="col-md-4 d-flex">
+                        <div class="product ftco-animate">
+                            <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/storage/${data.res[i].photograph});">
+                                <div class="desc">
+                                    <p class="meta-prod d-flex">
+                                        <a href="/product/${data.res[i].id}" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+
+                                        <a href="/product/${data.res[i].id}" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text text-center">
+                                <span class="sale">Sale</span>
+                                <span class="category">${data.res[i].name}</span>
+                                <h2>${data.res[i].name}</h2>
+                                <p class="mb-0"><span class="price">${data.res[i].price}</span></p>
+                            </div>
+                        </div>
+                    </div>`;
+                        html = html + value;
+                    }
+                    $('#product-filter').html(html);
                 }
             });
         })
-</script>
+</script> -->

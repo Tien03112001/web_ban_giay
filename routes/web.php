@@ -35,7 +35,7 @@ Route::post('admin/changepassword', [LoginController::class, 'changePassword']);
 Route::get('/', [MainController::class, 'CustomerIndex'])->name('HomeCustomer');
 Route::get('/product', [MainController::class, 'ProductList']);
 Route::get('/product/{product}', [MainController::class, 'ProductDetail']);
-Route::post('/addtocart', [CartController::class, 'create']);
+Route::post('/add-cart', [CartController::class, 'create']);
 Route::get('/menu/{menu}', [ProductController::class, 'ProductByMenu']);
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/updateCart', [CartController::class, 'update']);
@@ -44,10 +44,10 @@ Route::post('/checkout', [CartController::class, 'complete_checkout']);
 
 ##COMMENT
 Route::post('/comment', [CommentController::class, 'comment']);
+## FILTER-PRODUCT-BY-PRICE
+Route::POST('/filter_price_product', [ProductController::class, 'filter_price_product']);
 
-Route::get('/filter_price_product', [ProductController::class, 'filter_price_product']);
 Route::middleware(['auth'])->group(function () {
-
     Route::prefix('admin')->group(function () {
         Route::get('main', [MainController::class, 'index'])->name('admin');
 

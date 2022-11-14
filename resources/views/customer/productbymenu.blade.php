@@ -20,6 +20,7 @@
                     <div class="categories">
                         <h3>Lựa chọn mức giá</h3>
                         <ul class="p-0">
+
                             <li><a class="price_sidebar" href="#op1" id="op1">Dưới 300.000 Vnđ</a></li>
                             <li><a class="price_sidebar" href="#op2" id="op2">300.000-600.000 Vnđ</a></li>
                             <li><a class="price_sidebar" href="#op3" id="op3">600.000-900.000 Vnđ</a></li>
@@ -40,8 +41,8 @@
                 </div>
             </div>
             <div class="col-md-9">
-
-                <div class="row">
+                <input hidden id="menu_id" value="{{$menu_id}}">
+                <!-- <div class="row" id="product_list">
                     @foreach($products as $product)
                     <div class="col-md-4 d-flex">
                         <div class="product ftco-animate">
@@ -64,8 +65,12 @@
                     </div>
                     @endforeach
 
+                </div> -->
+                <div id="product-filter">
+
                 </div>
-                <div class="row mt-5">
+
+                <!-- <div class="row mt-5">
                     <div class="col text-center">
                         <div class="block-27">
                             <ul>
@@ -79,7 +84,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
 

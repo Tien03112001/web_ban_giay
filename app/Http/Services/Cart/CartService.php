@@ -47,7 +47,7 @@ class CartService
         if (is_null($carts)) return [];
 
         $productId = array_keys($carts);
-        return Product::select('id', 'name', 'price', 'photograph')
+        return Product::select('id', 'name', 'price', 'photograph', 'quantity')
             ->where('active', 0)
             ->whereIn('id', $productId)
             ->get();
@@ -80,8 +80,10 @@ class CartService
             Bill::create([
                 'customer_id' => (string) $customer['id'],
                 'product_id' => (string) $product->id,
-                'quantity' => (string) $carts[$product->id],
+                'quantity' => (int) $carts[$product->id],
             ]);
+            $qtyNew = (int)$product->quantity - (int)$carts[$product->id];
+            $product->update(['quantity' => $qtyNew]);
         }
         return true;
     }

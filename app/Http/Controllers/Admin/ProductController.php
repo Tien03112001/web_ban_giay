@@ -127,47 +127,23 @@ class ProductController extends Controller
             'title' => 'Trang sản phẩm',
             'menus' => $this->productAdminService->getMenu(),
             'products' => $products,
+            'menu_id' => $menu[0]->id,
         ]);
     }
     public function filter_price_product(Request $request)
     {
         $data = $request->all();
-
-
         if ($data['value'] == 0) {
-            $products = Product::where('active', 0)->get();
+            $products = Product::where('active', 0)->Where('menu_id', $data['menu_id'])->get();
         } elseif ($data['value'] == 1) {
-            $products = Product::whereBetween('price', [0, 300000])->get();
+            $products = Product::whereBetween('price', [0, 300000])->Where('menu_id', $data['menu_id'])->get();
         } elseif ($data['value'] == 2) {
-            $products = Product::whereBetween('price', [300000, 500000])->get();
+            $products = Product::whereBetween('price', [300000, 500000])->Where('menu_id', $data['menu_id'])->get();
         } elseif ($data['value'] == 3) {
-            $products = Product::whereBetween('price', [600000, 900000])->get();
+            $products = Product::whereBetween('price', [600000, 900000])->Where('menu_id', $data['menu_id'])->get();
         } else {
-            $products = Product::whereBetween('price', [900000, 10000000])->get();
+            $products = Product::whereBetween('price', [900000, 10000000])->Where('menu_id', $data['menu_id'])->get();
         }
-        $html = '';
-        foreach ($products as $product) {
-            $html .= '<div class="col-md-4 d-flex">
-                        <div class="product ftco-animate">
-                            <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/storage/' . $product->photograph . ');">
-                                <div class="desc">
-                                    <p class="meta-prod d-flex">
-                                        <a href="/product/' . $product->id . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-
-                                        <a href="/product/' . $product->id . '" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="text text-center">
-                                <span class="sale">Sale</span>
-                                <span class="category">' . $product->name . '</span>
-                                <h2>' . $product->name . '</h2>
-                                <p class="mb-0"><span class="price">' . $product->price . '</span></p>
-                            </div>
-                        </div>
-                    </div>';
-        }
-
-        return $html;
+        return response()->json(['res' => $products]);
     }
 }

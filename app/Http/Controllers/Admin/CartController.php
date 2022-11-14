@@ -28,7 +28,7 @@ class CartController extends Controller
             'carts' => Session::get('carts'),
         ]);
     }
-    public function  create(Request $request)
+    public function create(Request $request)
     {
         $result = $this->cartService->create($request);
         if ($result) {
