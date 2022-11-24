@@ -40,9 +40,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
-                <input hidden id="menu_id" value="{{$menu_id}}">
-                <!-- <div class="row" id="product_list">
+            <div id="Product_menu_first" class="col-md-9">
+                <div class="row" id="product_list">
+                    <input hidden id="menu_id" value="{{$menu_id}}">
                     @foreach($products as $product)
                     <div class="col-md-4 d-flex">
                         <div class="product ftco-animate">
@@ -65,8 +65,8 @@
                     </div>
                     @endforeach
 
-                </div> -->
-                <div id="product-filter">
+                </div>
+                <div id="product-filter" style="display:flex !important;">
 
                 </div>
 

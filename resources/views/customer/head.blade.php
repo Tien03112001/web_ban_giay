@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="/bootstrapUser/css/flaticon.css">
     <link rel="stylesheet" href="/bootstrapUser/css/style.css">
+    <link rel="stylesheet" href="/template/css/custom.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>

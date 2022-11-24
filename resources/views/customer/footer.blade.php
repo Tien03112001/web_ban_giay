@@ -171,7 +171,7 @@
             })
         })
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     $('.price_sidebar').click(
         function() {
 
@@ -192,6 +192,7 @@
                 data: {
                     value: value,
                     menu_id: menu_id,
+                    _token: '{{csrf_token()}}',
 
                 },
                 success: function(data) {
@@ -199,7 +200,7 @@
                     for (var i = 0; i < data.res.length; i++) {
 
                         value = `<div class="col-md-4 d-flex">
-                        <div class="product ftco-animate">
+                        <div class="product ftco-animate" style="opacity:1 !important;visibility: visible !important;">
                             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(/storage/${data.res[i].photograph});">
                                 <div class="desc">
                                     <p class="meta-prod d-flex">
@@ -219,8 +220,10 @@
                     </div>`;
                         html = html + value;
                     }
+                    document.getElementById("product_list").classList.add("display-fl");
                     $('#product-filter').html(html);
+
                 }
             });
         })
-</script> -->
+</script>
