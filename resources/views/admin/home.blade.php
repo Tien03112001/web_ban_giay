@@ -111,6 +111,14 @@
                                 <i class="menu-arrow"></i>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/chart" class="nav-link">
+                                <i class="mdi mdi-chart-areaspline"></i>
+
+                                <span class="menu-title">Thống kê</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>

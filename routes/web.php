@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\Menu\MenuController;
 use App\Http\Controllers\Admin\ProductController;
@@ -47,6 +48,7 @@ Route::post('/comment', [CommentController::class, 'comment']);
 ## FILTER-PRODUCT-BY-PRICE
 Route::POST('/filter_price_product', [ProductController::class, 'filter_price_product']);
 
+
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('main', [MainController::class, 'index'])->name('admin');
@@ -79,6 +81,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/list', [CommentController::class, 'show']);
             Route::DELETE('/destroy', [CommentController::class, 'destroy']);
             // Route::post('/edit/{customer}', [OrderController::class, 'update']);
+        });
+        #CHART
+        Route::prefix('/chart')->group(function () {
+            Route::get('/', [ChartController::class, 'index']);
+            Route::POST('/quantity', [ChartController::class, 'export_data_quantity']);
+            Route::POST('/price', [ChartController::class, 'export_data_price']);
         });
     });
 });
