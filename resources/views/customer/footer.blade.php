@@ -164,7 +164,6 @@
             <h3>${comment.name}</h3>
             <div class="meta">${comment.content}</div>
             <p>${comment.updated}</p>
-
         </div>`;
                     document.getElementById('comment').value = '';
                 }
