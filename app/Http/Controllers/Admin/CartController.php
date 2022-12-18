@@ -70,7 +70,7 @@ class CartController extends Controller
             $result1 = $this->cartService->complete_bill($carts);
             if ($result1) {
                 toastr()->success('Đặt hàng thành công');
-                SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
+                // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
                 Session::forget('carts');
                 return redirect('/cart');
             }

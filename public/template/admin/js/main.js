@@ -105,7 +105,7 @@ $('#btn-export-price-data').click(
     function (ev) {
         let date_start = document.getElementById('date_start').value;
         let date_finish = document.getElementById('date_finish').value;
-
+        var boolen_date=true;
         $.ajax({
             url: '/admin/chart/price',
             type: "POST",
@@ -115,7 +115,7 @@ $('#btn-export-price-data').click(
                 boolen_date: boolen_date,
             },
             success: function (data) {
-                const ctx = document.getElementById('myChart_1');
+                const ctx = document.getElementById('myChart');
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
