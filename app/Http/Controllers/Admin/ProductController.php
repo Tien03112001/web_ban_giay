@@ -22,6 +22,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        return view('admin.product.list', [
+            'title' => 'Trangg danh sách sản phẩm',
+            'products' => $this->productAdminService->getAll(),
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
