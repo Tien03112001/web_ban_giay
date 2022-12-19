@@ -25,11 +25,10 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.product.list', [
-            'title' => 'Trangg danh sách sản phẩm',
+            'title' => 'Tranggg danh sách sản phẩm',
             'products' => $this->productAdminService->getAll(),
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
