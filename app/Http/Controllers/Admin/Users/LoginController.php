@@ -69,6 +69,7 @@ class  LoginController extends Controller
 
             return redirect()->route('HomeCustomer');
         }
+        /// đỗi chiếu tài khoản mật khẩu ở dtb và chuyển ra các view tương ứng
         if ($request->input('email') == null) {
             toastr()->error('Lỗi, Xin mời nhập email');
         } elseif ($request->input('password') == null) {
@@ -76,7 +77,7 @@ class  LoginController extends Controller
         } else {
             toastr()->error('Lỗi, Xin mời nhập lại email và password');
         }
-
+        // bắt lỗi
         return redirect()->back();
     }
 
@@ -139,7 +140,7 @@ class  LoginController extends Controller
     }
     public function register(Request $request)
     {
-        if ($this->authenticationService->register($request)) {
+        if ($this->authenticationService->register($request)) {// truyền biến vào hàm register của authenticationService xử lý
             toastr()->success('Đăng ký thành công');
             return redirect('./admin/user/login');
         } else {
