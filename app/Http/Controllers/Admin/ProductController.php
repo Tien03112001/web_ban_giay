@@ -59,7 +59,6 @@ class ProductController extends Controller
             return Redirect::back();
         }
 
-        // dd($request->hasfile('photograph'));
     }
 
     /**

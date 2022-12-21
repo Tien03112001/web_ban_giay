@@ -35,7 +35,7 @@ class CartController extends Controller
             toastr()->success('Thêm vào giỏ hàng thành công');
             return redirect()->back();
         } else {
-            toastr()->error('Lỗi , xin mời nhập lại');
+            toastr()->error('Lỗi , hàng đang hết');
             return redirect()->back();
         }
     }

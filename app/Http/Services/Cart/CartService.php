@@ -16,11 +16,17 @@ class CartService
     {
         $qty = (int)$request->input('quantity');
         $product_id = (int)$request->input('product_id');
-
+        $qtyInAdmin=Product::where('id',$product_id)->first();
+        if($qty>$qtyInAdmin->quantity)
+        {
+            return false;
+        }
+        
         if ($qty <= 0 || $product_id <= 0) {
 
             return false;
         }
+        
 
         $carts = Session::get('carts');
         if (is_null($carts)) {
@@ -54,9 +60,22 @@ class CartService
     }
     public function update($request)
     {
-        Session::put('carts', $request->input('num_product'));
-
-        return true;
+        
+        $product_id = (int)$request->input('product_id');
+        $qtyInAdmin=Product::where('id',$product_id)->first();
+        if(!is_null($request->input('num_product')))
+        {
+            if($request->input('num_product')[$product_id]>$qtyInAdmin->quantity)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            Session::put('carts', $request->input('num_product'));
+            return true;
+        }
+     
     }
     public function complete_customer($request)
     {

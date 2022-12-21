@@ -35,7 +35,7 @@
                             $sum_price = $sum_price + (int)($product->price * $carts[$product->id]);
                             @endphp
                             <tr class="alert" role="alert">
-
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <td>
                                     <div class="img" style="background-image: url(storage/{{$product->photograph}});"></div>
                                 </td>
